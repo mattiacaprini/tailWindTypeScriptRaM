@@ -1,6 +1,5 @@
 import "./footer.scss";
 import React from "react";
-import { any } from "prop-types";
 import axios from "axios";
 
 interface FooterProps {}
