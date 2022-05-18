@@ -16,7 +16,7 @@ function Header() {
             <a href="/gioco">gioco</a>
           </p>
           <p>
-            <a href="/about">about</a>
+            <a href="/iscriviti">iscriviti</a>
           </p>
           <p className="support_us">
             <a href="/support_us">support us</a>

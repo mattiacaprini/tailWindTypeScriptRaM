@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./containers/home/home";
 import CharacterSelection from "./containers/characterSelection/characterSelectiont";
 import Gioco from "./containers/gioco/gioco";
+import Iscriviti from "./containers/iscriviti/iscriviti";
 
 class App extends React.Component {
   //sempre questi due parametri
@@ -18,6 +19,7 @@ class App extends React.Component {
             io dichiaro un oath comune che posso raggiungere dando la stessa path a cui voglio arrivare al click di un lik) */}
           <Route path="/character/:id" element={<CharacterSelection />} />
           <Route path="/gioco" element={<Gioco />} />
+          <Route path="/iscriviti" element={<Iscriviti />} />
 
           {/* <Route index element={<Home result={""} characters={""} />} /> */}
           {/* <Route path="teams" element={<Teams />}>
