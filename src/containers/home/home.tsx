@@ -77,11 +77,7 @@ class Home extends React.Component<{}, HomeState> {
           </div>
         </div>
 
-        <Footer
-          charNumber={this.state.characterNumber}
-          locaNumber={this.state.locaNumber}
-          episNumber={this.state.episodes}
-        />
+        <Footer />
       </div>
     );
   }

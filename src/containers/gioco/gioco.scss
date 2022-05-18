@@ -1,0 +1,28 @@
+$padding: 5rem;
+$min-height: calc(50vh - 60px);
+$ombreggiatura: rgb(0 0 0 / 10%) 10px 10px 15px -1px, rgba(224, 204, 204, 0.06) 0px 1px 5px -1px; ;
+$distanze: 1rem;
+$percentualePiena: 100%;
+$dimensioneRem: 1rem;
+
+.page{
+    background-color: rgb(36, 40, 47);
+    height: auto;
+    padding-top: $padding;
+    padding-bottom: $padding;
+    min-height: $min-height;
+}
+
+div{
+    span{
+        color: rgb(245, 245, 245);
+        margin: $padding / 3;
+
+        margin: $distanze;
+        display: flex;
+        justify-content: center;
+        box-shadow: $ombreggiatura;
+        font-size: $dimensioneRem * 1.3 ;
+
+    }
+}

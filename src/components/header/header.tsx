@@ -13,7 +13,7 @@ function Header() {
 
         <div className="menu">
           <p>
-            <a href="/docs">docs</a>
+            <a href="/gioco">gioco</a>
           </p>
           <p>
             <a href="/about">about</a>

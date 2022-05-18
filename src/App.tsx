@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./containers/home/home";
 import CharacterSelection from "./containers/characterSelection/characterSelectiont";
+import Gioco from "./containers/gioco/gioco";
 
 class App extends React.Component {
   //sempre questi due parametri
@@ -16,6 +17,8 @@ class App extends React.Component {
             dico in quale mio file voglio andare. Per far funzionare un pulsante, gli do semplicemente la stesas path dichiarata qui. Quindi
             io dichiaro un oath comune che posso raggiungere dando la stessa path a cui voglio arrivare al click di un lik) */}
           <Route path="/character/:id" element={<CharacterSelection />} />
+          <Route path="/gioco" element={<Gioco />} />
+
           {/* <Route index element={<Home result={""} characters={""} />} /> */}
           {/* <Route path="teams" element={<Teams />}>
               <Route index element={<LeagueStandings />} />
