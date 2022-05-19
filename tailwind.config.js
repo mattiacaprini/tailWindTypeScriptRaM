@@ -17,7 +17,15 @@ module.exports = {
       '6xl': '4rem',
       '7xl': '5rem',
     },
-    extend: {},
+    extend: {
+      height: {
+        'max': '32rem',
+      },
+
+      padding: {
+        '100': '33.4rem',
+      }
+    },
   },
   plugins: [],
 }

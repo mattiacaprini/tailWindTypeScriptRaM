@@ -38,21 +38,8 @@ class Home extends React.Component<{}, HomeState> {
       .then((result: any) => {
         this.setState({
           characters: result.data.results,
-          characterNumber: result.data.info.count,
         });
       });
-    axios
-      .get("https://rickandmortyapi.com/api/location")
-      .then((result: any) => {
-        this.setState({
-          locaNumber: result.data.info.count,
-        });
-      });
-    axios.get("https://rickandmortyapi.com/api/episode").then((result: any) => {
-      this.setState({
-        episodes: result.data.info.count,
-      });
-    });
   }
 
   render() {

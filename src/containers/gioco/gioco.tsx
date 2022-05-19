@@ -58,7 +58,7 @@ class Gioco extends React.Component<GiocoProps, GiocoState> {
 
         <div className="page">
           <div className="m-2 items-center">
-            <div className=" text-center p-10 text-xl">
+            <div className=" txt text-center p-10 text-xl">
               <span>VERRA' GENERATO UN NUMERO A CASO</span>
               <span>INDOVINALO</span>
               <span>
@@ -97,7 +97,7 @@ class Gioco extends React.Component<GiocoProps, GiocoState> {
                 alt="."
               />
 
-              <div className="align-center flex justify-between ">
+              <div className=" txt align-center flex justify-between ">
                 <span className="mt-10 text-2xl ">
                   TENTATIVI: {this.state.countTentaive}
                 </span>

@@ -4,21 +4,27 @@ form{
         margin-left: 2rem;
         margin-right: 2rem;
         color: rgb(245, 245, 245);
+        display: inline-grid;
     }
     
     input{
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
         color: black;
         border-radius: 0.40rem;
         text-align: center;
+        margin-top: 0.7rem;
     }
 
     select{
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
         color: black;
         border-radius: 0.40rem;
         text-align: center;
+        margin-top: 0.7rem;
+    }
+}
+
+div{
+    .delate{
+        border-radius: 1.5rem;
+        margin-top: 1.5rem;
     }
 }

@@ -1,21 +1,22 @@
 import React from "react";
+import { Atleta } from "../../containers/iscriviti/iscriviti";
 import "./account.scss";
 
-interface accountProps {}
-
-interface accountType {
-  nome: string;
-  peso: string;
-  ruolo: string;
+interface AccountProps {
+  onAtletaChange: (atleta: Atleta) => void;
+  atleta: Atleta;
+  onClick: () => void;
 }
 
-class Account extends React.Component<accountProps, accountType> {
-  constructor(props: accountProps) {
+interface AccountState {
+  atleta: Atleta;
+}
+
+class Account extends React.Component<AccountProps, AccountState> {
+  constructor(props: AccountProps) {
     super(props);
     this.state = {
-      nome: "",
-      peso: "",
-      ruolo: "",
+      atleta: props.atleta,
     };
   }
 
@@ -23,41 +24,86 @@ class Account extends React.Component<accountProps, accountType> {
 
   render() {
     return (
-      <div className="h-40 flex justify-center items-center bg-black ">
-        <form>
-          <label>
-            NOME :
-            <input
-              type="text"
-              required
-              onChange={(e) =>
-                this.setState({
-                  nome: e.target.value,
-                })
-              }
-            ></input>
-          </label>
-          <label>
-            PESO [kg] :
-            <input
-              type="text"
-              required
-              onChange={(e) =>
-                this.setState({
-                  peso: e.target.value,
-                })
-              }
-            ></input>
-          </label>
-          <label>
-            RUOLO :
-            <select id="framework">
-              <option value="1">interno</option>
-              <option value="2">mediano</option>
-              <option value="3">esterno</option>
-            </select>
-          </label>
-        </form>
+      <div>
+        <div className="h-28 flex justify-center items-center ">
+          {/* bg-black  */}
+          <form>
+            <label>
+              NOME :
+              <input
+                type="text"
+                required
+                onChange={(e) => {
+                  this.setState((prevState) => ({
+                    atleta: { ...prevState.atleta, nome: e.target.value },
+                  }));
+
+                  this.props.onAtletaChange({
+                    ...this.state.atleta,
+                    nome: e.target.value,
+                  });
+
+                  // this.setState({
+                  //   nome: e.target.value,
+                  // });
+                  // this.props.onNameChange(e.target.value);
+                }}
+              ></input>
+            </label>
+            <label>
+              PESO [kg] :
+              <input
+                type="number"
+                required
+                onChange={(e) => {
+                  this.setState((prevState) => ({
+                    atleta: { ...prevState.atleta, peso: e.target.value },
+                  }));
+
+                  this.props.onAtletaChange({
+                    ...this.state.atleta,
+                    peso: e.target.value,
+                  });
+
+                  // this.setState({
+                  //   nome: e.target.value,
+                  // });
+                  // this.props.onNameChange(e.target.value);
+                }}
+              ></input>
+            </label>
+            <label>
+              RUOLO :
+              <select
+                id="framework"
+                onChange={(e) => {
+                  this.setState((prevState) => ({
+                    atleta: { ...prevState.atleta, ruolo: e.target.value },
+                  }));
+
+                  this.props.onAtletaChange({
+                    ...this.state.atleta,
+                    ruolo: e.target.value,
+                  });
+
+                  // this.setState({
+                  //   nome: e.target.value,
+                  // });
+                  // this.props.onNameChange(e.target.value);
+                }}
+              >
+                <option value="">seleziona</option>
+                <option value="interno">interno</option>
+                <option value="mediano">mediano</option>
+                <option value="esterno">esterno</option>
+              </select>
+            </label>
+          </form>
+
+          <button className="bg-red-400 ml-20 text-lg delate p-2 ">
+            Rimuovi atleta
+          </button>
+        </div>
       </div>
     );
   }
