@@ -6,6 +6,7 @@ interface AccountProps {
   onAtletaChange: (atleta: Atleta) => void;
   atleta: Atleta;
   onClick: () => void;
+  firstAtleta: boolean;
 }
 
 interface AccountState {
@@ -33,6 +34,7 @@ class Account extends React.Component<AccountProps, AccountState> {
               <input
                 type="text"
                 required
+                value={this.props.atleta.nome}
                 onChange={(e) => {
                   this.setState((prevState) => ({
                     atleta: { ...prevState.atleta, nome: e.target.value },
@@ -55,6 +57,7 @@ class Account extends React.Component<AccountProps, AccountState> {
               <input
                 type="number"
                 required
+                value={this.props.atleta.peso}
                 onChange={(e) => {
                   this.setState((prevState) => ({
                     atleta: { ...prevState.atleta, peso: e.target.value },
@@ -76,6 +79,7 @@ class Account extends React.Component<AccountProps, AccountState> {
               RUOLO :
               <select
                 id="framework"
+                value={this.props.atleta.ruolo}
                 onChange={(e) => {
                   this.setState((prevState) => ({
                     atleta: { ...prevState.atleta, ruolo: e.target.value },
@@ -100,9 +104,14 @@ class Account extends React.Component<AccountProps, AccountState> {
             </label>
           </form>
 
-          <button className="bg-red-400 ml-20 text-lg delate p-2 ">
-            Rimuovi atleta
-          </button>
+          {this.props.firstAtleta && (
+            <button
+              onClick={() => this.props.onClick()}
+              className="bg-red-400 ml-20 text-lg delate p-2 "
+            >
+              Rimuovi atleta
+            </button>
+          )}
         </div>
       </div>
     );

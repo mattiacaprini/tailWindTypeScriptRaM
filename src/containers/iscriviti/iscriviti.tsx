@@ -6,8 +6,6 @@ import imgDefault from "../../img/play.png";
 import Account from "../../components/account/account";
 import AddPeople from "../../containers/addPeople/addPeople";
 import Lista from "../lista/lista";
-import { func } from "prop-types";
-import { NOMEM } from "dns";
 
 type IscrivitiProps = {};
 
@@ -20,6 +18,8 @@ type IscrivitiState = {
   atleta1: Atleta;
   arrAtleti1: Atleta[];
   arrAtleta2: [];
+  firstAtleta: boolean;
+  countAtleti: number;
 };
 
 export interface Atleta {
@@ -45,6 +45,8 @@ class Iscriviti extends React.Component<IscrivitiProps, IscrivitiState> {
       },
       arrAtleti1: [{ nome: "", peso: "", ruolo: "" }],
       arrAtleta2: [],
+      firstAtleta: false,
+      countAtleti: 1,
     };
   }
 
@@ -53,26 +55,47 @@ class Iscriviti extends React.Component<IscrivitiProps, IscrivitiState> {
   addPeopleFunction() {
     this.setState({
       arrAtleti1: [...this.state.arrAtleti1, { nome: "", peso: "", ruolo: "" }],
+      countAtleti: this.state.countAtleti + 1,
     });
+
+    if (this.state.countAtleti !== 0) {
+      this.setState({ firstAtleta: true });
+    }
+
+    console.log("aggiunto:" + this.state.countAtleti);
   }
 
   delateAtleta(id: number) {
-    const arrAtletiDaAggiornare = this.state.arrAtleti1;
-    arrAtletiDaAggiornare.splice(id, id);
-    this.setState({
+    console.log("indice", id);
+    console.log(this.state.arrAtleti1);
+    const arrAtletiDaAggiornare = [...this.state.arrAtleti1];
+    arrAtletiDaAggiornare.splice(id, 1);
+    console.log(arrAtletiDaAggiornare);
+
+    console.log("rimosso:" + this.state.countAtleti);
+
+    if (this.state.countAtleti === 2) {
+      this.setState({
+        firstAtleta: false,
+      });
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
       arrAtleti1: arrAtletiDaAggiornare,
-    });
+      countAtleti: this.state.countAtleti - 1,
+    }));
   }
 
   selectionAtleta(id: number, atleta: Atleta) {
-    const arrAtletiDaAggiornare = this.state.arrAtleti1;
+    const arrAtletiDaAggiornare = [...this.state.arrAtleti1];
     arrAtletiDaAggiornare[id] = atleta;
-    this.setState({
-      arrAtleti1: arrAtletiDaAggiornare,
-    });
-  }
 
-  atletaAggiunto() {}
+    this.setState((prevState) => ({
+      ...prevState,
+      arrAtleti1: arrAtletiDaAggiornare,
+    }));
+  }
 
   render() {
     // TODO: mettere atleta nello stato
@@ -83,6 +106,7 @@ class Iscriviti extends React.Component<IscrivitiProps, IscrivitiState> {
           onClick={() => this.delateAtleta(i)}
           atleta={atleta}
           onAtletaChange={(atleta) => this.selectionAtleta(i, atleta)}
+          firstAtleta={this.state.firstAtleta}
         />
       );
     });
@@ -93,10 +117,12 @@ class Iscriviti extends React.Component<IscrivitiProps, IscrivitiState> {
 
         <div className="page">
           {atletiInput}
-          <AddPeople onClick={() => this.addPeopleFunction()} />
+          <AddPeople
+            onClick={() => this.addPeopleFunction()}
+            firstAtleta={this.state.firstAtleta}
+          />
           <Lista atleta={this.state.arrAtleti1} />
         </div>
-
         <Footer />
       </>
     );

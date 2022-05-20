@@ -2,6 +2,7 @@ import React from "react";
 
 interface addPeopleProps {
   onClick: () => void;
+  firstAtleta: boolean;
 }
 
 interface addPeopleState {}
